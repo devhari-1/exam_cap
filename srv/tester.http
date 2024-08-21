@@ -1,0 +1,124 @@
+### Get srv
+http://localhost:4004/odata/v4/employeeSrv
+
+### Get srv metadata
+http://localhost:4004/odata/v4/employeeSrv/$metadata
+
+### Get emp data
+http://localhost:4004/odata/v4/employeeSrv/Employee
+
+### Get emp data single record
+http://localhost:4004/odata/v4/employeeSrv/Employee(02BD2137-0890-1EEA-A6C2-BB55C197E7FB)
+
+### •	Get all the Employees whose name starts with ‘S’
+http://localhost:4004/odata/v4/employeeSrv/Employee?$filter=contains(nameFirst,'S')
+
+### •	Get the top 2 employees, use orderby salaryAmount.
+http://localhost:4004/odata/v4/employeeSrv/Employee?$orderby=salaryAmount&$top=2
+
+### •	CREATE an employee with salary <50000 & currency code USD.
+POST http://localhost:4004/odata/v4/employeeSrv/Employee
+Content-Type : application/json
+
+{   
+
+    "nameFirst": "Hari",
+    "nameMiddle": null,
+    "nameLast": "Krishna",
+    "nameInitials": null,
+    "Gender": "M",
+    "Language": "E",
+    "phoneNumber": null,
+    "Email": null,
+    "loginName": "Hari",
+    "Currency_code": "USD",
+    "salaryAmount": 38764,
+    "accountNumber": "456789012",
+    "bankId": "99999888",
+    "bankName": "Deutsches Geldinstitut"
+}
+
+
+### •	CREATE an employee with salary >50000 & currency code USD.
+POST http://localhost:4004/odata/v4/employeeSrv/Employee
+Content-Type : application/json
+
+{   
+
+    "nameFirst": "Krishna",
+    "nameMiddle": null,
+    "nameLast": "Saripalli",
+    "nameInitials": null,
+    "Gender": "M",
+    "Language": "E",
+    "phoneNumber": null,
+    "Email": null,
+    "loginName": "Krishna",
+    "Currency_code": "USD",
+    "salaryAmount": 58764,
+    "accountNumber": "456789012",
+    "bankId": "99999888",
+    "bankName": "Deutsches Geldinstitut"
+}
+
+### •	CREATE an employee with salary <50000 & currency code EUR.
+POST http://localhost:4004/odata/v4/employeeSrv/Employee
+Content-Type: application/json
+ 
+{
+      "nameFirst": "Rahul",
+      "nameMiddle": null,
+      "nameLast": "david",
+      "nameInitials": null,
+      "Gender": "F",
+      "Language": "E",
+      "phoneNumber": "9082729914",
+      "Email": "rahuldavid@gmail.com",
+      "loginName": "RAHUL",
+      "Currency_code": "EUR",
+      "salaryAmount": 45000,
+      "accountNumber": "9082729914",
+      "bankId": "12100035",
+      "bankName": "My Bank of San Francisco"
+    }
+
+
+### •	UPDATE an employee by keeping the nameFirst and loginName intact.
+
+
+
+PATCH http://localhost:4004/odata/v4/employeeSrv/Employee(02BD2137-0890-1EEA-A6C2-BB55C19787FB)
+Content-Type: application/json
+ 
+{
+    "salaryAmount":1000,
+    "Currency_code": "EUR"
+}
+
+
+### •	UPDATE an employee by changing the loginName.
+
+
+
+PATCH http://localhost:4004/odata/v4/employeeSrv/Employee(02BD2137-0890-1EEA-A6C2-BB55C19787FB)
+Content-Type: application/json
+ 
+{
+    "loginName" : "VVR"
+}
+
+
+
+
+###•	DELETE any employee.
+DELETE http://localhost:4004/odata/v4/employeeSrv/Employee/02BD2137-0890-1EEA-A6C2-BB55C197E7FB
+
+### DELETE an employee whose nameFirst starts with ‘S’
+DELETE http://localhost:4004/odata/v4/employeeSrv/Employee/02BD2137-0890-1EEA-A6C2-BB55C197E7FB?$filter=contains(nameFirst,'S')
+
+
+###
+http://localhost:4004/odata/v4/purchaseOrder/purchaseItems
+
+###
+http://localhost:4004/odata/v4/purchaseOrder/$metadata
